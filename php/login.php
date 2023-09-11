@@ -7,9 +7,19 @@ if (!empty($_POST["name"]) || !empty($_POST["surname"]) || !empty($_POST["passwo
     $surname = htmlentities($_POST["surname"], ENT_QUOTES, "UTF-8");
     $password = htmlentities($_POST["password"], ENT_QUOTES, "UTF-8");
 
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $user = $pdo->query("SELECT * FROM users 
-         WHERE name = '$name' AND surname = '$surname' AND password = '$hashed_password'");
-    $user->fetch(PDO::FETCH_ASSOC);
-    echo var_dump($user);
+    $query = "SELECT * FROM users WHERE name = '$name' AND surname = '$surname';";
+    $stmt = $pdo->query($query);
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if ($users) {
+        foreach ($users as $user) {
+            if (password_verify($password, $user["password"])) {
+                $_SESSION['id'] = $user['id'];
+                $_SESSION['name'] = $user['name'];
+                $_SESSION['surname'] = $user['surname'];
+
+            }
+        }
+    }
+} else {
+    header("Location: ../index.html");
 }
