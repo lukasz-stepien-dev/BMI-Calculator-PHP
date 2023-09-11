@@ -15,8 +15,11 @@ if (!empty($_POST["name"]) || !empty($_POST["surname"]) || !empty($_POST["passwo
             if (password_verify($password, $user["password"])) {
                 $_SESSION['id'] = $user['id'];
                 $_SESSION['name'] = $user['name'];
-                $_SESSION['surname'] = $user['surname'];
-
+                $_SESSION['weight'] = $user['weight'];
+                $_SESSION['height'] = $user['height'];
+                $_SESSION['bmi'] = $user['bmi'];
+                $_SESSION['password'] = $user['password'];
+                header("Location: ../dashboard.php");
             }
         }
     }
