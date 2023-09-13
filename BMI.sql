@@ -18,22 +18,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `BMI`
+-- Database: `bmi`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Users`
+-- Table structure for table `bmi`
 --
 
-CREATE TABLE `Users` (
-  `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `surname` varchar(150) NOT NULL,
-  `weight` int(11) NOT NULL,
-  `height` int(11) NOT NULL,
-  `bmi` double NOT NULL
+CREATE TABLE `users` (
+                         `id` int(11) NOT NULL,
+                         `name` varchar(150) NOT NULL,
+                         `surname` varchar(150) NOT NULL,
+                         `password` varchar(255) NOT NULL,
+                         `weight` int(11) NOT NULL,
+                         `height` int(11) NOT NULL,
+                         `bmi` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -43,7 +44,7 @@ CREATE TABLE `Users` (
 --
 -- Indexes for table `Users`
 --
-ALTER TABLE `Users`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -53,7 +54,7 @@ ALTER TABLE `Users`
 --
 -- AUTO_INCREMENT for table `Users`
 --
-ALTER TABLE `Users`
+ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

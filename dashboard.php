@@ -1,5 +1,5 @@
 <?php
-require_once "php/database.php";
+$db = require_once "php/database.php";
 session_start();
 ?>
 <!DOCTYPE html>
@@ -23,12 +23,13 @@ session_start();
         <input type="submit" value="Oblicz" id="calc">
     </form>
     <p class="info"></p>
-    <h2>Twoje poprzednie BMI</h2>
+    <h2>Twoje zapisane poprzednie BMI</h2>
     <?php
-    echo "<p>Waga: {$_SESSION['weight']}<br>
-            Wzrost: {$_SESSION['height']}<br>
-            BMI: {$_SESSION['bmi']}
-        </p>"
+    $result = $db->query("SELECT * FROM users WHERE id = '{$_SESSION['id']}'")->fetch(PDO::FETCH_ASSOC);
+    echo "<p>BMI: {$result['bmi']}<br>
+            Wzrost: {$result['height']}<br>
+            Waga: {$result['weight']}<br>
+        </p>";
     ?>
     <script src="scripts/calculator.js"></script>
 </main>
