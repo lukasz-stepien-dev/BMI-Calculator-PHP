@@ -2,7 +2,7 @@
 session_start();
 $pdo = require_once "database.php";
 
-if (!empty($_POST["name"]) || !empty($_POST["surname"]) || !empty($_POST["password"])) {
+if (!empty($_POST["name"]) && !empty($_POST["surname"]) && !empty($_POST["password"])) {
     $name = htmlentities($_POST["name"], ENT_QUOTES, "UTF-8");
     $surname = htmlentities($_POST["surname"], ENT_QUOTES, "UTF-8");
     $password = htmlentities($_POST["password"], ENT_QUOTES, "UTF-8");
