@@ -6,4 +6,4 @@ $db->query("UPDATE users
                         height = '{$_COOKIE['heightToSave']}',
                         bmi = '{$_COOKIE['bmiToSave']}'
                     WHERE id = '{$_SESSION['id']}'");
-header("Location: ../BMI-Calculator/dashboard.php");
+header("Location: ../dashboard.php");
