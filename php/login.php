@@ -18,6 +18,11 @@ if (!empty($_POST["name"]) || !empty($_POST["surname"]) || !empty($_POST["passwo
                 header("Location: ../dashboard.php");
             }
         }
+    } else {
+        $_SESSION['name'] = $name;
+        $_SESSION['surname'] = $surname;
+        $_SESSION['password'] = password_hash($password, PASSWORD_DEFAULT);
+        header("Location: ../create-account.html");
     }
 } else {
     header("Location: ../index.html");
